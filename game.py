@@ -1,6 +1,6 @@
 from settings import *
 from snake import Snake
-from sprites import Fruit
+from sprites import Fruit, Body
 
 class Game:
     def __init__(self):
@@ -24,6 +24,15 @@ class Game:
         for fruits in self.all_fruits:
             coll = pygame.sprite.spritecollide(self.snake, self.all_fruits, True)
             if coll:
+                body_count = len(self.snake.bodies)
+                body_pos = None
+
+                if body_count == 0:
+                    body_pos = self.snake.rect.topleft                      # set the position as the head's last position 
+                else:
+                    body_pos = self.snake.bodies[-1].rect.topleft           # set the position as the last body's last position 
+
+                self.snake.bodies.append(Body(body_pos, self.all_sprites))  # Creates the new body and appends to the list
                 CONFIG["FRUIT"]["ACTIVE"] = False
 
     def spawn_fruit(self):

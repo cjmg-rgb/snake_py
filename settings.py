@@ -11,7 +11,8 @@ CONFIG = {
     "FPS": 20,
     "SNAKE": {
         "SNAKE_HEAD_CLR": (0, 255, 0),
-        "SPEED": 100
+        "SPEED": 100,
+        "SNAKE_BODY_CLR": (255, 255, 255)
     },
     "FRUIT": {
         "CLR": (255, 0, 0),
